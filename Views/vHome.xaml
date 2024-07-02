@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="JPillajoChanchayT5.Views.vHome"
+             Title="vHome">
+    <VerticalStackLayout
+        Spacing="2"
+        Padding="2"
+        BackgroundColor="#f7f7f7">
+
+        <Image Source="https://example.com/your-image-url.jpg"
+               Aspect="AspectFit"
+               HeightRequest="20"/>
+
+        <Label 
+            Text="TAREA 5 JEFFERSON PILLAJO"
+            HorizontalTextAlignment="Center"
+            FontSize="24"
+            FontAttributes="Bold"
+            TextColor="#333"/>
+
+        <Entry x:Name="txtNombre"
+               Placeholder="Ingrese su nombre"
+               FontSize="18"
+               Margin="0,10,0,0"
+               BackgroundColor="White"
+               
+                   TextColor="#333"/>
+
+        <Grid Padding="10" RowSpacing="10" ColumnSpacing="10" BackgroundColor="White" >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Button x:Name="btnInsertar"
+                    Text="Añadir persona"
+                    Clicked="btnInsertar_Clicked"
+                    Grid.Row="0"
+                    Grid.ColumnSpan="2"
+                    BackgroundColor="#4CAF50"
+                    TextColor="White"
+                    FontSize="18"
+                    Padding="10"/>
+
+            <Label x:Name="status"
+                   Grid.Row="1"
+                   Grid.ColumnSpan="2"
+                   TextColor="Red"
+                   FontSize="16"
+                   Margin="0,10,0,10"
+                   HorizontalTextAlignment="Center"/>
+
+            <Button x:Name="btnListar"
+                    Text="Listar"
+                    Clicked="btnListar_Clicked"
+                    Grid.Row="2"
+                    Grid.ColumnSpan="2"
+                    BackgroundColor="#2196F3"
+                    TextColor="White"
+                    FontSize="18"
+                    Padding="10"/>
+
+            <CollectionView x:Name="ListarPersonas"
+                            Grid.Row="3"
+                            Grid.ColumnSpan="2">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Padding="10" RowSpacing="5" ColumnSpacing="5">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="2*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Button x:Name="btnEditar"
+                                    Text="Editar"
+                                    Grid.Column="0"
+                                    Clicked="btnEditar_Clicked"
+                                    BackgroundColor="#FFC107"
+                                    TextColor="White"
+                                    Padding="5"/>
+
+                            <Button x:Name="btnEliminar"
+                                    Text="Eliminar"
+                                    Grid.Column="1"
+                                    Clicked="btnEliminar_Clicked"
+                                    BackgroundColor="#F44336"
+                                    TextColor="White"
+                                    Padding="5"/>
+
+                            <Label Text="{Binding Id}" 
+                                   Grid.Column="2" 
+                                   HorizontalTextAlignment="Center"
+                                   FontSize="16"
+                                   TextColor="#333"/>
+
+                            <Label Text="{Binding Nombre}" 
+                                   Grid.Column="3"
+                                   FontSize="16"
+                                   TextColor="#333"/>
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </Grid>
+    </VerticalStackLayout>
+</ContentPage>

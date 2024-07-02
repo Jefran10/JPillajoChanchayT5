@@ -1,4 +1,7 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using JPillajoChanchayT5.Models;
+using JPillajoChanchayT5.Utils;
+
+using Microsoft.Extensions.Logging;
 
 namespace JPillajoChanchayT5
 {
@@ -16,9 +19,10 @@ namespace JPillajoChanchayT5
                 });
 
 #if DEBUG
-    		builder.Logging.AddDebug();
+            builder.Logging.AddDebug();
 #endif
-
+            string dbPath = FileAccessHelp.GetLocalFilePath("personas.db3");
+            builder.Services.AddSingleton<PersonRepository>(s => ActivatorUtilities.CreateInstance<PersonRepository>(s, dbPath));
             return builder.Build();
         }
     }
